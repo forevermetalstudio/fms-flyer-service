@@ -16,7 +16,24 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 API_KEY = os.environ.get('FMS_API_KEY', 'fms-secret-2026')
 
 def generate_flyer_png(org_name, start_date, end_date, fundraiser_code):
-    """Generate a flyer PNG and return the file path."""
+    """Generate a flyer PNG using Pillow image overlay and return the file path."""
+    import sys
+    sys.path.insert(0, SCRIPT_DIR)
+    from generate_flyer_v2 import generate_flyer
+
+    tmp = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
+    tmp.close()
+    generate_flyer(
+        org_name        = org_name,
+        start_date      = start_date,
+        end_date        = end_date,
+        fundraiser_code = fundraiser_code,
+        output_path     = tmp.name
+    )
+    return tmp.name
+
+def _generate_flyer_png_old(org_name, start_date, end_date, fundraiser_code):
+    """DEPRECATED: old HTML/puppeteer approach kept for reference."""
     # Load embedded images
     with open(os.path.join(SCRIPT_DIR, 'images.json')) as f:
         images = json.load(f)
