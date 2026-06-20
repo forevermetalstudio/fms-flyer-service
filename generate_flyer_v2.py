@@ -105,8 +105,8 @@ def generate_flyer(org_name, start_date, end_date, fundraiser_code, output_path=
         y_org += line_h
 
     # ── 4. Replace "YOUR LOGO HERE" box with FMS logo ────────────────────────
-    # Logo box: x=618..1008, y=48..235 (extend to y=235 to cover pink bottom border at y=228-230)
-    logo_x1, logo_y1, logo_x2, logo_y2 = 615, 46, 1010, 236
+    # Logo box: extend to y=302 to cover pink dashed line at y=296-297
+    logo_x1, logo_y1, logo_x2, logo_y2 = 615, 46, 1010, 303
     draw.rectangle([logo_x1, logo_y1, logo_x2, logo_y2], fill=OFF_WHITE)
 
     try:
@@ -126,17 +126,29 @@ def generate_flyer(org_name, start_date, end_date, fundraiser_code, output_path=
         print(f"Logo paste error: {e}")
 
     # ── 5. Fill Fundraiser Dates ──────────────────────────────────────────────
-    # Start date blank area: y=375..422 (above gray line at y=423)
-    # End date blank area:   y=435..498 (below TO, above gray line at y=500)
-    # Right panel x range:   x=618..1008
+    # Gray underlines at y=362 and y=423 (start date area: y=320..362)
+    # End date area: y=435..500 (gray underline at y=500)
+    # Date box interior: x=640..1000 (centered)
     font_date = load_font(26, bold=False)
+    date_x1, date_x2 = 640, 1000
+    date_box_w = date_x2 - date_x1
 
-    # Date text starts at x=673 (aligned with original underline)
+    # Start date: center horizontally in x=640..1000, vertically in y=375..422
+    # (below FUNDRAISER DATES header at y=363-366, above gray underline at y=423)
     draw.rectangle([618, 375, 1008, 422], fill=OFF_WHITE)
-    draw.text((673, 388), start_date, font=font_date, fill=BLACK)
+    sd_w = text_width(draw, start_date, font_date)
+    sd_h = text_height(draw, start_date, font_date)
+    sd_x = date_x1 + (date_box_w - sd_w) // 2
+    sd_y = 375 + (47 - sd_h) // 2
+    draw.text((sd_x, sd_y), start_date, font=font_date, fill=BLACK)
 
-    draw.rectangle([618, 435, 1008, 498], fill=OFF_WHITE)
-    draw.text((673, 462), end_date, font=font_date, fill=BLACK)
+    # End date: center horizontally in x=640..1000, vertically in y=435..500
+    draw.rectangle([618, 435, 1008, 500], fill=OFF_WHITE)
+    ed_w = text_width(draw, end_date, font_date)
+    ed_h = text_height(draw, end_date, font_date)
+    ed_x = date_x1 + (date_box_w - ed_w) // 2
+    ed_y = 435 + (65 - ed_h) // 2
+    draw.text((ed_x, ed_y), end_date, font=font_date, fill=BLACK)
 
     # ── 6. Fill Fundraiser Code ───────────────────────────────────────────────
     # Code input box interior: x=618..1008, y=593..618
@@ -158,7 +170,9 @@ def generate_flyer(org_name, start_date, end_date, fundraiser_code, output_path=
         draw.text((876, ty_y), tl, font=font_thanks, fill=BLACK)
         ty_y += 18
 
-    # ── 8. Save and return ────────────────────────────────────────────────────
+    # ── 8. Resize to 8.5x11 at 150 DPI (1275x1650) and save ─────────────────
+    # Standard letter size: 8.5" x 11" at 150 DPI = 1275 x 1650 pixels
+    img = img.resize((1275, 1650), Image.LANCZOS)
     buf = io.BytesIO()
     img.save(buf, format="PNG", dpi=(150, 150))
     buf.seek(0)
