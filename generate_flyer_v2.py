@@ -161,9 +161,9 @@ def generate_flyer(org_name, start_date, end_date, fundraiser_code, output_path=
     draw.text((cx, 594), code_upper, font=font_code, fill=PINK)
 
     # ── 7. Fill "THANK YOU FOR SUPPORTING" org name box ──────────────────────
-    # Box interior: x=860..956, y=1460..1510 (96px wide, 50px tall)
-    ty_box_x1, ty_box_y1, ty_box_x2, ty_box_y2 = 860, 1460, 956, 1510
-    ty_box_w = ty_box_x2 - ty_box_x1  # 96px
+    # Box interior: x=745..956, y=1460..1510 (211px wide, 50px tall)
+    ty_box_x1, ty_box_y1, ty_box_x2, ty_box_y2 = 745, 1460, 956, 1510
+    ty_box_w = ty_box_x2 - ty_box_x1  # 211px
     ty_box_h = ty_box_y2 - ty_box_y1  # 50px
     draw.rectangle([ty_box_x1, ty_box_y1, ty_box_x2, ty_box_y2], fill=OFF_WHITE)
 
