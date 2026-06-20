@@ -161,14 +161,30 @@ def generate_flyer(org_name, start_date, end_date, fundraiser_code, output_path=
     draw.text((cx, 594), code_upper, font=font_code, fill=PINK)
 
     # ── 7. Fill "THANK YOU FOR SUPPORTING" org name box ──────────────────────
-    # Box: x=872..1015, y=1472..1512
-    draw.rectangle([872, 1472, 1015, 1512], fill=OFF_WHITE)
-    font_thanks = load_font(15, bold=False)
-    ty_lines    = wrap_to_width(draw, org_name, font_thanks, 138)
-    ty_y        = 1476
-    for tl in ty_lines[:2]:
-        draw.text((876, ty_y), tl, font=font_thanks, fill=BLACK)
-        ty_y += 18
+    # Box interior: x=860..956, y=1460..1510 (96px wide, 50px tall)
+    ty_box_x1, ty_box_y1, ty_box_x2, ty_box_y2 = 860, 1460, 956, 1510
+    ty_box_w = ty_box_x2 - ty_box_x1  # 96px
+    ty_box_h = ty_box_y2 - ty_box_y1  # 50px
+    draw.rectangle([ty_box_x1, ty_box_y1, ty_box_x2, ty_box_y2], fill=OFF_WHITE)
+
+    # Auto-size font to fit org name within the box
+    # Try font sizes from 13 down to 8 until it fits
+    for fsize in range(13, 6, -1):
+        font_thanks = load_font(fsize, bold=False)
+        ty_lines = wrap_to_width(draw, org_name, font_thanks, ty_box_w - 4)
+        line_h = fsize + 3
+        total_h = len(ty_lines) * line_h
+        if total_h <= ty_box_h:
+            break
+
+    # Center the text block vertically and horizontally in the box
+    total_h = len(ty_lines) * (fsize + 3)
+    ty_y = ty_box_y1 + (ty_box_h - total_h) // 2
+    for tl in ty_lines:
+        tw = text_width(draw, tl, font_thanks)
+        tx = ty_box_x1 + (ty_box_w - tw) // 2
+        draw.text((tx, ty_y), tl, font=font_thanks, fill=BLACK)
+        ty_y += fsize + 3
 
     # ── 8. Resize to 8.5x11 at 150 DPI (1275x1650) and save ─────────────────
     # Standard letter size: 8.5" x 11" at 150 DPI = 1275 x 1650 pixels
