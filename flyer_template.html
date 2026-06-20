@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FMS Fundraiser Flyer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@900&family=Montserrat:wght@400;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    width: 850px;
+    background: #fff;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .flyer {
+    width: 850px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  /* ── TOP BAR ── */
+  .top-bar {
+    text-align: center;
+    padding: 14px 0 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #222;
+  }
+  .top-bar .dot { color: #E8356D; margin: 0 6px; }
+
+  /* ── HEADER SECTION ── */
+  .header-section {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 36px 16px;
+    gap: 20px;
+  }
+  .header-left { flex: 1; }
+  .support-script {
+    font-family: 'Dancing Script', cursive;
+    font-size: 42px;
+    color: #E8356D;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .support-script .heart { font-size: 36px; }
+  .org-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #111;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .pink-divider {
+    width: 100%;
+    height: 2px;
+    background: #E8356D;
+    margin: 8px 0 10px;
+  }
+  .partner-text {
+    font-size: 13px;
+    color: #333;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .header-right {
+    width: 180px;
+    flex-shrink: 0;
+  }
+  .logo-box {
+    border: 2px solid #E8356D;
+    width: 180px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  /* ── MIDDLE ROW: photo + info box ── */
+  .middle-row {
+    display: flex;
+    align-items: stretch;
+    padding: 0 36px;
+    gap: 20px;
+    margin-bottom: 0;
+  }
+  .studio-photo {
+    flex: 1;
+    min-height: 260px;
+    background: #111;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .studio-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: #fff;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+
+  .info-box {
+    width: 210px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .dates-card {
+    border: 1.5px solid #E8356D;
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+  .dates-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #222;
+    margin-bottom: 12px;
+  }
+  .dates-card-header .icon {
+    font-size: 18px;
+    color: #E8356D;
+  }
+  .date-line {
+    border-bottom: 1.5px solid #222;
+    margin-bottom: 4px;
+    min-height: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+    padding-bottom: 2px;
+  }
+  .date-to {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    margin: 6px 0;
+  }
+
+  .code-card {
+    border: 1.5px solid #E8356D;
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+  .code-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #222;
+    margin-bottom: 10px;
+  }
+  .code-card-header .icon { font-size: 18px; color: #E8356D; }
+  .code-value-box {
+    border: 1.5px solid #ccc;
+    border-radius: 3px;
+    padding: 8px 10px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #E8356D;
+    letter-spacing: 1px;
+    text-align: center;
+    background: #fff9fb;
+    margin-bottom: 10px;
+  }
+  .code-note {
+    font-size: 10.5px;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* ── BRUSHSTROKE BANNER ── */
+  .brushstroke-section {
+    text-align: center;
+    margin: 18px 0 10px;
+    position: relative;
+  }
+  .brushstroke-bg {
+    display: inline-block;
+    position: relative;
+    padding: 8px 40px;
+  }
+  .brushstroke-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #f9c8d4;
+    transform: skewX(-3deg) scaleX(1.05);
+    border-radius: 4px;
+    z-index: 0;
+  }
+  .brushstroke-text {
+    position: relative;
+    z-index: 1;
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    color: #E8356D;
+  }
+
+  /* ── PRODUCTS SECTION ── */
+  .products-section {
+    padding: 8px 36px 16px;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+  .product-item { text-align: center; }
+  .product-icon {
+    font-size: 20px;
+    color: #E8356D;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .product-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #222;
+    text-transform: uppercase;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .product-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+  .product-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f0f0f0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #999;
+  }
+
+  /* ── HOW IT WORKS + GIVE BACK ── */
+  .bottom-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 12px 36px 16px;
+  }
+  .section-heading {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #111;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-heading::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: #E8356D;
+    margin-left: 4px;
+  }
+  .steps-list { list-style: none; }
+  .steps-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .step-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #E8356D;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-bold { font-weight: 800; color: #111; }
+  .step-sub { color: #555; }
+
+  .giveback-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .giveback-item {
+    text-align: center;
+    border-right: 1.5px solid #f0c0cc;
+    padding: 0 6px;
+  }
+  .giveback-item:last-child { border-right: none; }
+  .giveback-pct {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 2px solid #E8356D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 6px;
+  }
+  .giveback-pct .num {
+    font-size: 15px;
+    font-weight: 900;
+    color: #E8356D;
+    line-height: 1;
+  }
+  .giveback-pct .back {
+    font-size: 8px;
+    font-weight: 800;
+    color: #E8356D;
+    letter-spacing: 0.5px;
+  }
+  .giveback-desc {
+    font-size: 9px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #1a1a1a;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 18px 36px;
+    gap: 20px;
+  }
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-pin { font-size: 20px; color: #E8356D; }
+  .footer-address {
+    font-size: 9.5px;
+    color: #E8356D;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .footer-center { text-align: center; }
+  .footer-logo-text {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .footer-logo-heart { color: #E8356D; }
+  .footer-logo-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .footer-tagline {
+    font-family: 'Dancing Script', cursive;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 3px;
+  }
+  .footer-right { text-align: right; }
+  .footer-thanks {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .footer-org-box {
+    border: 1.5px solid rgba(255,255,255,0.3);
+    padding: 6px 12px;
+    min-height: 28px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    CREATE <span class="dot">•</span> CONNECT <span class="dot">•</span> GIVE BACK
+  </div>
+
+  <!-- HEADER -->
+  <div class="header-section">
+    <div class="header-left">
+      <div class="support-script">Support <span class="heart">♡</span></div>
+      <div class="org-name">{{ORG_NAME}}</div>
+      <div class="pink-divider"></div>
+      <div class="partner-text">
+        We're partnering with Forever Metal Studio<br>
+        to raise funds for our organization!
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="logo-box">
+        YOUR<br>LOGO<br>HERE
+      </div>
+    </div>
+  </div>
+
+  <!-- MIDDLE ROW -->
+  <div class="middle-row">
+    <div class="studio-photo">
+      <img src="https://images.squarespace-cdn.com/content/v1/6424b2e0f3d0f1290e8e3e3e/1680000000000-XXXXXXXXXXXXXXXX/studio-photo.jpg"
+           onerror="this.style.display='none'"
+           alt="Forever Metal Studio" />
+      <div class="photo-overlay">It's Not Shopping.<br>It's Creating.</div>
+    </div>
+    <div class="info-box">
+      <div class="dates-card">
+        <div class="dates-card-header">
+          <span class="icon">📅</span> FUNDRAISER DATES
+        </div>
+        <div class="date-line">{{START_DATE}}</div>
+        <div class="date-to">TO</div>
+        <div class="date-line">{{END_DATE}}</div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-header">
+          <span class="icon">🏷️</span> FUNDRAISER CODE
+        </div>
+        <div class="code-value-box">{{FUNDRAISER_CODE}}</div>
+        <div class="code-note">
+          Mention this code at checkout and a portion of qualifying purchases will be donated back to our organization.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRUSHSTROKE BANNER -->
+  <div class="brushstroke-section">
+    <div class="brushstroke-bg">
+      <span class="brushstroke-text">Create Something You'll Love</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="products-section">
+    <div class="products-grid">
+      <div class="product-item">
+        <span class="product-icon">✨</span>
+        <span class="product-label">Permanent<br>Jewelry</span>
+        <div class="product-photo-placeholder">photo</div>
+      </div>
+      <div class="product-item">
+        <span class="product-icon">🧢</span>
+        <span class="product-label">Trucker<br>Hats</span>
+        <div class="product-photo-placeholder">photo</div>
+      </div>
+      <div class="product-item">
+        <span class="product-icon">🤠</span>
+        <span class="product-label">Cowboy<br>Hats</span>
+        <div class="product-photo-placeholder">photo</div>
+      </div>
+      <div class="product-item">
+        <span class="product-icon">🥤</span>
+        <span class="product-label">Custom<br>Tumblers</span>
+        <div class="product-photo-placeholder">photo</div>
+      </div>
+      <div class="product-item">
+        <span class="product-icon">🎁</span>
+        <span class="product-label">Personalized<br>Gifts</span>
+        <div class="product-photo-placeholder">photo</div>
+      </div>
+      <div class="product-item">
+        <span class="product-icon">💝</span>
+        <span class="product-label">Engraved<br>Keepsakes</span>
+        <div class="product-photo-placeholder">photo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS + GIVE BACK -->
+  <div class="bottom-info">
+    <div>
+      <div class="section-heading">HOW IT WORKS</div>
+      <ul class="steps-list">
+        <li>
+          <span class="step-num">1</span>
+          <div><span class="step-bold">VISIT FOREVER METAL STUDIO</span><br><span class="step-sub">at Reno Public Market</span></div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div><span class="step-bold">CREATE SOMETHING</span><br><span class="step-sub">uniquely your own</span></div>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <div><span class="step-bold">MENTION FUNDRAISER CODE</span><br><span class="step-sub">at checkout</span></div>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <div><span class="step-bold">SUPPORT OUR ORGANIZATION</span><br><span class="step-sub">while creating and connecting</span></div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-heading">GIVE BACK PROGRAM</div>
+      <div class="giveback-grid">
+        <div class="giveback-item">
+          <div class="giveback-pct"><span class="num">10%</span><span class="back">BACK</span></div>
+          <div class="giveback-desc">Qualifying<br>Individual<br>Purchases</div>
+        </div>
+        <div class="giveback-item">
+          <div class="giveback-pct"><span class="num">20%</span><span class="back">BACK</span></div>
+          <div class="giveback-desc">Private<br>Party<br>Bookings</div>
+        </div>
+        <div class="giveback-item">
+          <div class="giveback-pct"><span class="num">+2%</span><span class="back">BONUS</span></div>
+          <div class="giveback-desc">Monday–<br>Thursday<br>Purchases</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      <span class="footer-pin">📍</span>
+      <div class="footer-address">
+        FIND US AT<br>
+        RENO PUBLIC MARKET<br>
+        299 E. PLUMB LANE<br>
+        RENO, NV
+      </div>
+    </div>
+    <div class="footer-center">
+      <div class="footer-logo-text">F<span class="footer-logo-heart">♥</span>REVER</div>
+      <div class="footer-logo-sub">METAL STUDIO</div>
+      <div class="footer-tagline">It's Not Shopping. It's Creating.</div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-thanks">THANK YOU FOR<br>SUPPORTING</div>
+      <div class="footer-org-box">{{ORG_NAME_SHORT}}</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

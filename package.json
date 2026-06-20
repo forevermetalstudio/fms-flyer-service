@@ -1,0 +1,9 @@
+{
+  "name": "fms-flyer-service",
+  "version": "1.0.0",
+  "description": "FMS Fundraiser Flyer Generator",
+  "main": "render_from_file.js",
+  "dependencies": {
+    "puppeteer-core": "^22.0.0"
+  }
+}
