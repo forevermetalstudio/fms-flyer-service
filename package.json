@@ -4,6 +4,6 @@
   "description": "FMS Fundraiser Flyer Generator",
   "main": "render_from_file.js",
   "dependencies": {
-    "puppeteer-core": "^22.0.0"
+    "puppeteer-core": "^22.15.0"
   }
 }
