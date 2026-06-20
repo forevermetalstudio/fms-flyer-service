@@ -105,8 +105,8 @@ def generate_flyer(org_name, start_date, end_date, fundraiser_code, output_path=
         y_org += line_h
 
     # ── 4. Replace "YOUR LOGO HERE" box with FMS logo ────────────────────────
-    # Logo box: x=618..1008, y=48..230
-    logo_x1, logo_y1, logo_x2, logo_y2 = 618, 48, 1008, 230
+    # Logo box: x=618..1008, y=48..235 (extend to y=235 to cover pink bottom border at y=228-230)
+    logo_x1, logo_y1, logo_x2, logo_y2 = 615, 46, 1010, 236
     draw.rectangle([logo_x1, logo_y1, logo_x2, logo_y2], fill=OFF_WHITE)
 
     try:
@@ -131,11 +131,12 @@ def generate_flyer(org_name, start_date, end_date, fundraiser_code, output_path=
     # Right panel x range:   x=618..1008
     font_date = load_font(26, bold=False)
 
+    # Date text starts at x=673 (aligned with original underline)
     draw.rectangle([618, 375, 1008, 422], fill=OFF_WHITE)
-    draw.text((622, 388), start_date, font=font_date, fill=BLACK)
+    draw.text((673, 388), start_date, font=font_date, fill=BLACK)
 
     draw.rectangle([618, 435, 1008, 498], fill=OFF_WHITE)
-    draw.text((622, 462), end_date, font=font_date, fill=BLACK)
+    draw.text((673, 462), end_date, font=font_date, fill=BLACK)
 
     # ── 6. Fill Fundraiser Code ───────────────────────────────────────────────
     # Code input box interior: x=618..1008, y=593..618
